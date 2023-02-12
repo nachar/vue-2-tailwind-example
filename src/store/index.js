@@ -10,29 +10,24 @@ export default new Vuex.Store({
       { name: 'ToDo', key: 'to-do' },
       { name: 'Done', key: 'done' },
     ],
-    tasks: [
-      {
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, reprehenderit',
-        date: new Date(),
-        id: 1,
-      },
-      {
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
-        date: new Date(),
-        id: 2,
-      },
-      {
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis',
-        date: new Date(),
-        id: 3,
-      },
-    ],
+    tasks: [],
+    lastId: 0,
   },
   getters: {
   },
   mutations: {
+    SET_NEW_TASK(state, task) {
+      state.lastId += 1;
+      state.tasks.push({
+        ...task,
+        id: state.lastId,
+      });
+    },
   },
   actions: {
+    addTask({ commit }, task) {
+      commit('SET_NEW_TASK', task);
+    },
   },
   modules: {
   },

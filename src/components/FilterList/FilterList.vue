@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import FilterListItem from '@/components/FilterListItem.vue';
+import FilterListItem from '@/components/FilterListItem/FilterListItem.vue';
 import { mapState } from 'vuex';
 
 export default {

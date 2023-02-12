@@ -1,11 +1,11 @@
 <template>
-  <ul>
+  <ul class="py-8">
     <TaskComponent v-for="task in tasks" :key="task.id" :task="task" />
   </ul>
 </template>
 
 <script>
-import TaskComponent from '@/components/TaskComponent.vue';
+import TaskComponent from '@/components/TaskComponent/TaskComponent.vue';
 import { mapState } from 'vuex';
 
 export default {

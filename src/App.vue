@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container mx-auto px-4">
+  <div id="app" class="container min-h-screen mx-auto p-4">
     <FilterList />
     <ToDoList />
     <AddTask />
@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import FilterList from '@/components/FilterList.vue';
-import ToDoList from '@/components/ToDoList.vue';
-import AddTask from '@/components/AddTask.vue';
+import FilterList from '@/components/FilterList/FilterList.vue';
+import ToDoList from '@/components/ToDoList/ToDoList.vue';
+import AddTask from '@/components/AddTask/AddTask.vue';
 
 export default {
   name: 'App',

@@ -1,6 +1,6 @@
 <template>
   <li>
-    <p>{{ task.description }}</p>
+    <p><span>{{ task.id }} </span>{{ task.description }}</p>
   </li>
 </template>
 
