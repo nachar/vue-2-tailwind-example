@@ -27,13 +27,22 @@ export default new Vuex.Store({
     SET_EDITING_TASK(state, task) {
       state.editingTask = structuredClone(task);
     },
+    SET_EDITING_TASK_DATA(state, { id, description, date }) {
+      const currentTaskIndex = state.tasks.findIndex((item) => item.id === id);
+      state.tasks[currentTaskIndex].description = description;
+      state.tasks[currentTaskIndex].date = date;
+      state.editingTask = undefined;
+    },
   },
   actions: {
     addTask({ commit }, task) {
       commit('SET_NEW_TASK', task);
     },
-    editTask({ commit }, task) {
+    selectEditingTask({ commit }, task) {
       commit('SET_EDITING_TASK', task);
+    },
+    editTask({ commit }, task) {
+      commit('SET_EDITING_TASK_DATA', task);
     },
   },
 });

@@ -35,26 +35,27 @@ export default {
   },
   watch: {
     editingTask(val) {
-      if (!val) return;
-      this.id = val.id;
-      this.description = val.description;
-      this.date = val.date;
+      const currentData = val || { id: undefined, description: '', date: undefined };
+      this.setData(currentData);
     },
   },
   computed: {
     ...mapState(['editingTask']),
   },
   methods: {
-    ...mapActions(['addTask', 'editTask']),
+    ...mapActions(['addTask', 'selectEditingTask', 'editTask']),
     saveTask() {
-      this.addTask({ description: this.description, date: this.date });
-      this.cleanData();
-      this.editTask(undefined);
+      if (this.id) {
+        this.editTask({ id: this.id, description: this.description, date: this.date });
+      } else {
+        this.addTask({ description: this.description, date: this.date });
+      }
+      this.setData({ id: undefined, description: '', date: undefined });
     },
-    cleanData() {
-      this.id = undefined;
-      this.description = '';
-      this.date = undefined;
+    setData({ id, description, date }) {
+      this.id = id;
+      this.description = description;
+      this.date = date;
     },
   },
 };

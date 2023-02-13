@@ -20,7 +20,7 @@
 
 <script>
 import AddTaskForm from '@/components/AddTaskForm/AddTaskForm.vue';
-import { mapState } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'AddTask',
@@ -34,8 +34,7 @@ export default {
   },
   watch: {
     editingTask(val) {
-      if (!val) return;
-      this.active = true;
+      this.active = !!val;
     },
     tasks() {
       this.toggleTask();
@@ -45,8 +44,10 @@ export default {
     ...mapState(['editingTask', 'tasks']),
   },
   methods: {
+    ...mapActions(['selectEditingTask']),
     toggleTask() {
       this.active = !this.active;
+      if (!this.active) this.selectEditingTask(undefined);
     },
   },
 };

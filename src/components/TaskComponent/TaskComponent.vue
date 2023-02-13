@@ -17,9 +17,9 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['editTask']),
+    ...mapActions(['selectEditingTask']),
     setEditingTask() {
-      this.editTask(this.task);
+      this.selectEditingTask(this.task);
     },
   },
 };
