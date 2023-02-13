@@ -3,14 +3,14 @@
     <div class="container mx-auto">
       <div class="relative">
         <button
-          @click="toggleTask()"
+          @click="toggleTask(true)"
           class="absolute right-0 bottom-0 p-6 rounded-full">
-          <span v-if="active">x</span>
-          <span v-else>+</span>
+          Add task
         </button>
         <div
           class="task-form absolute right-0 w-full bg-gray-100 rounded p-4"
-          :class="{ 'task-form--active': active }">
+          :class="{ 'task-form--active': editTaskWindow }">
+          <button @click="toggleTask(false)">Close</button>
           <AddTaskForm />
         </div>
       </div>
@@ -27,27 +27,13 @@ export default {
   components: {
     AddTaskForm,
   },
-  data() {
-    return {
-      active: false,
-    };
-  },
-  watch: {
-    editingTask(val) {
-      this.active = !!val;
-    },
-    tasks() {
-      this.toggleTask();
-    },
-  },
   computed: {
-    ...mapState(['editingTask', 'tasks']),
+    ...mapState(['editTaskWindow']),
   },
   methods: {
-    ...mapActions(['selectEditingTask']),
-    toggleTask() {
-      this.active = !this.active;
-      if (!this.active) this.selectEditingTask(undefined);
+    ...mapActions(['toggleEditTaskWindow']),
+    toggleTask(status) {
+      this.toggleEditTaskWindow(status);
     },
   },
 };
@@ -62,7 +48,7 @@ export default {
 
   &--active {
     visibility: visible;
-    bottom: 68px;
+    bottom: 0;
   }
 }
 </style>

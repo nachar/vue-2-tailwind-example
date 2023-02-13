@@ -1,6 +1,7 @@
 <template>
   <li>
-    <p><span>{{ task.id }} </span>{{ task.description }}</p>
+    <p><span>{{ task.id }} | </span>{{ task.description }} | <span>{{ task.date }}</span></p>
+    <button @click="deleteCurrentTask()">Delete</button>
     <button @click="setEditingTask()">Edit</button>
   </li>
 </template>
@@ -17,9 +18,12 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['selectEditingTask']),
+    ...mapActions(['selectEditingTask', 'deleteTask']),
     setEditingTask() {
       this.selectEditingTask(this.task);
+    },
+    deleteCurrentTask() {
+      this.deleteTask(this.task);
     },
   },
 };
