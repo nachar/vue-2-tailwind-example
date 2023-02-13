@@ -1,5 +1,6 @@
 <template>
   <ul class="py-8">
+    <p v-if="!tasks.length">Please add a new task</p>
     <TaskComponent v-for="task in tasks" :key="task.id" :task="task" />
   </ul>
 </template>

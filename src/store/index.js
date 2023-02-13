@@ -11,6 +11,7 @@ export default new Vuex.Store({
       { name: 'Done', key: 'done' },
     ],
     tasks: [],
+    editingTask: undefined,
     lastId: 0,
   },
   getters: {
@@ -23,12 +24,16 @@ export default new Vuex.Store({
         id: state.lastId,
       });
     },
+    SET_EDITING_TASK(state, task) {
+      state.editingTask = structuredClone(task);
+    },
   },
   actions: {
     addTask({ commit }, task) {
       commit('SET_NEW_TASK', task);
     },
-  },
-  modules: {
+    editTask({ commit }, task) {
+      commit('SET_EDITING_TASK', task);
+    },
   },
 });

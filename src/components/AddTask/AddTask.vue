@@ -9,7 +9,7 @@
           <span v-else>+</span>
         </button>
         <div
-          class="task-form absolute right-0 w-full"
+          class="task-form absolute right-0 w-full bg-gray-100 rounded p-4"
           :class="{ 'task-form--active': active }">
           <AddTaskForm />
         </div>
@@ -20,6 +20,7 @@
 
 <script>
 import AddTaskForm from '@/components/AddTaskForm/AddTaskForm.vue';
+import { mapState } from 'vuex';
 
 export default {
   name: 'AddTask',
@@ -30,6 +31,18 @@ export default {
     return {
       active: false,
     };
+  },
+  watch: {
+    editingTask(val) {
+      if (!val) return;
+      this.active = true;
+    },
+    tasks() {
+      this.toggleTask();
+    },
+  },
+  computed: {
+    ...mapState(['editingTask', 'tasks']),
   },
   methods: {
     toggleTask() {
@@ -43,12 +56,12 @@ export default {
 .task-form {
   max-width: 440px;
   visibility: hidden;
-  bottom: -500px;
-  transition: all 500ms linear;
+  bottom: -200px;
+  transition: all 200ms linear;
 
   &--active {
     visibility: visible;
-    bottom: 50px;
+    bottom: 68px;
   }
 }
 </style>
