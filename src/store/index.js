@@ -6,16 +6,22 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     filters: [
-      { name: 'All task', key: 'all-task' },
+      { name: 'All tasks', key: 'all' },
       { name: 'ToDo', key: 'to-do' },
       { name: 'Done', key: 'done' },
     ],
+    selectedFilter: 'all',
     tasks: [],
     editingTask: undefined,
     lastId: 0,
     editTaskWindow: false,
   },
   getters: {
+    filteredTasks: ({ selectedFilter, tasks }) => {
+      if (selectedFilter === 'to-do') return tasks.filter((task) => !task.done);
+      if (selectedFilter === 'done') return tasks.filter((task) => task.done);
+      return tasks;
+    },
   },
   mutations: {
     SET_NEW_TASK(state, task) {
@@ -42,6 +48,9 @@ export default new Vuex.Store({
     EDIT_TASK_WINDOW(state, status) {
       state.editTaskWindow = status;
     },
+    SET_FILTER(state, { key }) {
+      state.selectedFilter = key;
+    },
   },
   actions: {
     addTask({ commit }, task) {
@@ -64,6 +73,9 @@ export default new Vuex.Store({
     toggleEditTaskWindow({ commit }, status) {
       commit('EDIT_TASK_WINDOW', status);
       if (!status) commit('SET_EDITING_TASK', undefined);
+    },
+    changeFilter({ commit }, filter) {
+      commit('SET_FILTER', filter);
     },
   },
 });

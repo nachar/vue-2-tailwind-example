@@ -1,13 +1,15 @@
 <template>
   <ul class="py-8">
-    <p v-if="!tasks.length">Please add a new task</p>
-    <TaskComponent v-for="task in tasks" :key="task.id" :task="task" />
+    <li v-if="!filteredTasks.length">
+      <p>Please add a new task</p>
+    </li>
+    <TaskComponent v-for="task in filteredTasks" :key="task.id" :task="task" />
   </ul>
 </template>
 
 <script>
 import TaskComponent from '@/components/TaskComponent/TaskComponent.vue';
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'ToDoList',
@@ -15,7 +17,7 @@ export default {
     TaskComponent,
   },
   computed: {
-    ...mapState(['tasks']),
+    ...mapGetters(['filteredTasks']),
   },
 };
 </script>
