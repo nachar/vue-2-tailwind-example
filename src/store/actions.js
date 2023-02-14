@@ -23,4 +23,7 @@ export default {
   changeFilter({ commit }, filter) {
     commit('SET_FILTER', filter);
   },
+  changeTaskStatus({ commit }, task) {
+    commit('CHANGE_TASK_STATUS', task);
+  },
 };

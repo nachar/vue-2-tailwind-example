@@ -1,7 +1,15 @@
 <template>
-  <li>
-    <p><span>{{ task.id }} | </span>{{ task.description }} | <span>{{ task.date }}</span></p>
+  <li class="border-b-2 border-b-gray last:border-b-0 p-4">
+    <button
+      @click="changeStatus()"
+      class="w-8 h-8 bg-dark-gray rounded-full text-white flex justify-center items-center"
+      :class="{ 'bg-success': task.done }">
+      <span v-if="task.done" class="material-symbols-outlined">done</span>
+    </button>
+    <p>{{ task.description }}</p>
+    <p class="text-sm">{{ task.date }}</p>
     <button @click="deleteCurrentTask()">Delete</button>
+    <br>
     <button @click="setEditingTask()">Edit</button>
   </li>
 </template>
@@ -18,12 +26,15 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['selectEditingTask', 'deleteTask']),
+    ...mapActions(['selectEditingTask', 'deleteTask', 'changeTaskStatus']),
     setEditingTask() {
       this.selectEditingTask(this.task);
     },
     deleteCurrentTask() {
       this.deleteTask(this.task);
+    },
+    changeStatus() {
+      this.changeTaskStatus(this.task);
     },
   },
 };

@@ -26,4 +26,8 @@ export default {
   SET_FILTER(state, { key }) {
     state.selectedFilter = key;
   },
+  CHANGE_TASK_STATUS(state, { id }) {
+    const currentTaskIndex = state.tasks.findIndex((item) => item.id === id);
+    state.tasks[currentTaskIndex].done = !state.tasks[currentTaskIndex].done;
+  },
 };
