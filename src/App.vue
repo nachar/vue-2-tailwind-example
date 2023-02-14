@@ -1,8 +1,10 @@
 <template>
-  <div id="app" class="container min-h-screen mx-auto px-4 pt-8 pb-20">
+  <div>
     <FilterList />
-    <ToDoList />
-    <AddTask />
+    <div id="app" class="container min-h-screen mx-auto px-4 pb-20">
+      <ToDoList />
+      <AddTask />
+    </div>
   </div>
 </template>
 

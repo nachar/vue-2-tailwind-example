@@ -1,21 +1,27 @@
 <template>
-  <div class="fixed left-0 bottom-0 w-full">
+  <section class="fixed left-0 bottom-0 w-full">
     <div class="container mx-auto">
       <div class="relative">
         <button
           @click="toggleTask(true)"
-          class="absolute right-0 bottom-0 p-6 rounded-full">
-          Add task
+          class="absolute right-2 bottom-2 bg-primary text-white rounded-full
+          flex items-center justify-center w-14 h-14">
+          <span class="material-symbols-outlined">add</span>
         </button>
         <div
-          class="task-form absolute right-0 w-full bg-gray-100 rounded p-4"
+          class="task-form absolute right-0 w-full bg-gray rounded p-4"
           :class="{ 'task-form--active': editTaskWindow }">
-          <button @click="toggleTask(false)">Close</button>
+          <button
+            @click="toggleTask(false)"
+            class="absolute right-4 -top-5 bg-secondary text-white rounded-full
+            flex items-center justify-center w-10 h-10 mb-2">
+            <span class="material-symbols-outlined">close</span>
+          </button>
           <AddTaskForm />
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -43,7 +49,7 @@ export default {
 .task-form {
   max-width: 440px;
   visibility: hidden;
-  bottom: -200px;
+  bottom: -300px;
   transition: all 200ms linear;
 
   &--active {

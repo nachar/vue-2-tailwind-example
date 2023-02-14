@@ -1,26 +1,32 @@
 <template>
-  <li class="px-6">
-    <button @click="selectFilter()">
-      {{ filer.name }}
+  <li>
+    <button
+      @click="selectFilter()"
+      class="filter-item py-4 px-6 border-b-primary"
+      :class="{'border-b-2': filter.key === selectedFilter}">
+      {{ filter.name }}
     </button>
   </li>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'FilterListItem',
   props: {
-    filer: {
+    filter: {
       require: true,
       type: Object,
     },
   },
+  computed: {
+    ...mapState(['selectedFilter']),
+  },
   methods: {
     ...mapActions(['changeFilter']),
     selectFilter() {
-      this.changeFilter(this.filer);
+      this.changeFilter(this.filter);
     },
   },
 };
