@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container min-h-screen mx-auto p-4">
+  <div id="app" class="container min-h-screen mx-auto px-4 pt-8 pb-20">
     <FilterList />
     <ToDoList />
     <AddTask />
