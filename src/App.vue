@@ -5,6 +5,7 @@
       <ToDoList />
       <AddTask />
     </div>
+    <ModalDelete />
   </div>
 </template>
 
@@ -12,6 +13,7 @@
 import FilterList from '@/components/FilterList/FilterList.vue';
 import ToDoList from '@/components/ToDoList/ToDoList.vue';
 import AddTask from '@/components/AddTask/AddTask.vue';
+import ModalDelete from '@/components/ModalDelete/ModalDelete.vue';
 
 export default {
   name: 'App',
@@ -19,6 +21,7 @@ export default {
     FilterList,
     ToDoList,
     AddTask,
+    ModalDelete,
   },
 };
 </script>
