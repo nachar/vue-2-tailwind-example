@@ -1,6 +1,9 @@
 <template>
-  <ValidationObserver v-slot="{ invalid }">
-    <form @submit.prevent="saveTask()" class="w-full flex flex-col">
+  <ValidationObserver v-slot="{ handleSubmit, reset, invalid }">
+    <form
+      @submit.prevent="handleSubmit(saveTask)"
+      @reset.prevent="reset"
+      class="w-full flex flex-col">
       <label for="description" class="mb-1">Description</label>
       <ValidationProvider rules="required" v-slot="{ errors }" class="mb-4">
       <textarea
@@ -28,6 +31,7 @@
         </span>
       </ValidationProvider>
 
+      <button type="reset" class="hidden" ref="reset">>Reset</button>
       <button
         type="submit"
         :disabled="invalid"
@@ -74,6 +78,8 @@ export default {
         this.addTask({ description: this.description, date: this.date });
       }
       this.setData({ id: undefined, description: '', date: undefined });
+
+      this.$refs.reset.click();
     },
     setData({ id, description, date }) {
       this.id = id;
