@@ -14,7 +14,7 @@
         </span>
       </ValidationProvider>
 
-      <label for="date" class="mb-1">Date</label>
+      <label for="date" class="mb-1">Compliance date</label>
 
       <ValidationProvider rules="required" v-slot="{ errors }" class="mb-4">
         <input
@@ -31,7 +31,8 @@
       <button
         type="submit"
         :disabled="invalid"
-        class="bg-secondary disabled:bg-dark-gray text-white w-1/2 mx-auto py-2 rounded">
+        class="bg-secondary disabled:bg-dark-gray text-white w-1/2
+         mx-auto rounded hover:bg-opacity-80 py-2">
         Save
       </button>
     </form>

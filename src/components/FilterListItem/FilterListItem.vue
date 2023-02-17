@@ -2,8 +2,9 @@
   <li>
     <button
       @click="selectFilter()"
-      class="filter-item py-4 px-6 border-b-primary"
-      :class="{'border-b-2': filter.key === selectedFilter}">
+      class="filter-item text-dark-gray px-6 border-b-primary
+      hover:text-black hover:border-b-2 py-4"
+      :class="{'border-b-2 text-black': filter.key === selectedFilter}">
       {{ filter.name }}
     </button>
   </li>

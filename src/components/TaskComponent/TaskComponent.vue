@@ -1,16 +1,31 @@
 <template>
-  <li class="border-b-2 border-b-gray last:border-b-0 p-4">
-    <button
-      @click="changeStatus()"
-      class="w-8 h-8 bg-dark-gray rounded-full text-white flex justify-center items-center"
-      :class="{ 'bg-success': task.done }">
-      <span v-if="task.done" class="material-symbols-outlined">done</span>
-    </button>
-    <p>{{ task.description }}</p>
-    <p class="text-sm">{{ task.date }}</p>
-    <button @click="deleteTask()">Delete</button>
-    <br>
-    <button @click="setEditingTask()">Edit</button>
+  <li
+    :class="{ 'bg-tertiary-light': expired }"
+    class="border-b-2 border-b-gray last:border-b-0 p-4 rounded">
+    <div class="flex items-center">
+      <button
+        @click="changeStatus()"
+        class="flex-none w-8 h-8 bg-gray rounded-full
+         text-white flex justify-center items-center"
+        :class="{ 'bg-success': task.done }">
+        <span v-if="task.done" class="material-symbols-outlined">done</span>
+      </button>
+      <div class="flex-auto px-4">
+        <p>{{ task.description }}</p>
+        <p class="text-sm text-dark-gray">{{ task.date }}</p>
+      </div>
+      <div class="flex-none">
+        <button @click="duplicateCurrentTask()" class="mr-1">
+          <span class="material-symbols-outlined">content_copy</span>
+        </button>
+        <button @click="setEditingTask()" class="mr-1">
+          <span class="material-symbols-outlined">edit</span>
+        </button>
+        <button @click="deleteTask()">
+          <span class="material-symbols-outlined">delete</span>
+        </button>
+      </div>
+    </div>
   </li>
 </template>
 
@@ -25,8 +40,13 @@ export default {
       type: Object,
     },
   },
+  computed: {
+    expired() {
+      return !this.task.done && new Date(this.task.date) < new Date();
+    },
+  },
   methods: {
-    ...mapActions(['selectEditingTask', 'selectDeletingTask', 'changeTaskStatus']),
+    ...mapActions(['selectEditingTask', 'selectDeletingTask', 'changeTaskStatus', 'duplicateTask']),
     setEditingTask() {
       this.selectEditingTask(this.task);
     },
@@ -35,6 +55,9 @@ export default {
     },
     deleteTask() {
       this.selectDeletingTask(this.task);
+    },
+    duplicateCurrentTask() {
+      this.duplicateTask(this.task);
     },
   },
 };

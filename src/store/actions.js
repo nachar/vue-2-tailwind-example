@@ -30,4 +30,8 @@ export default {
   changeTaskStatus({ commit }, task) {
     commit('CHANGE_TASK_STATUS', task);
   },
+  duplicateTask({ commit }, task) {
+    commit('UPDATE_LAST_ID');
+    commit('SET_NEW_TASK', task);
+  },
 };

@@ -4,7 +4,7 @@
       <div class="relative">
         <button
           @click="toggleTask(true)"
-          class="absolute right-2 bottom-2 bg-primary text-white rounded-full
+          class="absolute right-2 bottom-2 bg-primary hover:bg-opacity-80 text-white rounded-full
           flex items-center justify-center w-14 h-14">
           <span class="material-symbols-outlined">add</span>
         </button>
@@ -13,7 +13,7 @@
           :class="{ 'task-form--active': editTaskWindow }">
           <button
             @click="toggleTask(false)"
-            class="absolute right-4 -top-5 bg-secondary text-white rounded-full
+            class="absolute right-4 -top-5 bg-secondary hover:bg-opacity-80 text-white rounded-full
             flex items-center justify-center w-10 h-10 mb-2">
             <span class="material-symbols-outlined">close</span>
           </button>

@@ -9,6 +9,7 @@ module.exports = {
       primary: '#ec3534',
       secondary: '#255886',
       tertiary: '#9c2c2c',
+      'tertiary-light': 'rgba(236, 53, 52, .2)',
       success: '#00b67a',
       gray: '#f7f7f7',
       'dark-gray': '#7b7b7b',
