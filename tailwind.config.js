@@ -12,6 +12,7 @@ module.exports = {
       success: '#00b67a',
       gray: '#f7f7f7',
       'dark-gray': '#7b7b7b',
+      'dark-opacity': 'rgba(0, 0, 0, .4)',
     },
   },
   plugins: [],

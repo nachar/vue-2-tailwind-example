@@ -9,4 +9,5 @@ export default {
   editingTask: undefined,
   lastId: 0,
   editTaskWindow: false,
+  deletingTask: undefined,
 };

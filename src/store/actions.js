@@ -13,8 +13,12 @@ export default {
     commit('EDIT_TASK_WINDOW', false);
     commit('SET_EDITING_TASK', undefined);
   },
-  deleteTask({ commit }, task) {
-    commit('DELETE_TASK', task);
+  selectDeletingTask({ commit }, task) {
+    commit('SELECT_DELETING_TASK', task);
+  },
+  deleteTask({ commit }) {
+    commit('DELETE_TASK');
+    commit('SELECT_DELETING_TASK', undefined);
   },
   toggleEditTaskWindow({ commit }, status) {
     commit('EDIT_TASK_WINDOW', status);

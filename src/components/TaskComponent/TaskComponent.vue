@@ -8,7 +8,7 @@
     </button>
     <p>{{ task.description }}</p>
     <p class="text-sm">{{ task.date }}</p>
-    <button @click="deleteCurrentTask()">Delete</button>
+    <button @click="deleteTask()">Delete</button>
     <br>
     <button @click="setEditingTask()">Edit</button>
   </li>
@@ -26,15 +26,15 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['selectEditingTask', 'deleteTask', 'changeTaskStatus']),
+    ...mapActions(['selectEditingTask', 'selectDeletingTask', 'changeTaskStatus']),
     setEditingTask() {
       this.selectEditingTask(this.task);
     },
-    deleteCurrentTask() {
-      this.deleteTask(this.task);
-    },
     changeStatus() {
       this.changeTaskStatus(this.task);
+    },
+    deleteTask() {
+      this.selectDeletingTask(this.task);
     },
   },
 };

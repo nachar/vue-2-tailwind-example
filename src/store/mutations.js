@@ -17,8 +17,8 @@ export default {
     state.tasks[currentTaskIndex].description = description;
     state.tasks[currentTaskIndex].date = date;
   },
-  DELETE_TASK(state, { id }) {
-    state.tasks = state.tasks.filter((item) => item.id !== id);
+  DELETE_TASK(state) {
+    state.tasks = state.tasks.filter((item) => item.id !== state.deletingTask.id);
   },
   EDIT_TASK_WINDOW(state, status) {
     state.editTaskWindow = status;
@@ -29,5 +29,8 @@ export default {
   CHANGE_TASK_STATUS(state, { id }) {
     const currentTaskIndex = state.tasks.findIndex((item) => item.id === id);
     state.tasks[currentTaskIndex].done = !state.tasks[currentTaskIndex].done;
+  },
+  SELECT_DELETING_TASK(state, task) {
+    state.deletingTask = task;
   },
 };
