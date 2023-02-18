@@ -33,6 +33,7 @@
 
       <button type="reset" class="hidden" ref="reset">>Reset</button>
       <button
+        id="submit-button"
         type="submit"
         :disabled="invalid"
         class="bg-secondary disabled:bg-dark-gray text-white w-1/2

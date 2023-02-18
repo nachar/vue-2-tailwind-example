@@ -1,6 +1,6 @@
 <template>
   <ul class="py-8">
-    <li v-if="!filteredTasks.length">
+    <li id="without-tasks" v-if="!filteredTasks.length">
       <p>Please add a new task</p>
     </li>
     <TaskComponent v-for="task in filteredTasks" :key="task.id" :task="task" />
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import TaskComponent from '@/components/TaskComponent/TaskComponent.vue';
+import TaskComponent from '@/components/TaskComponent.vue';
 import { mapGetters } from 'vuex';
 
 export default {

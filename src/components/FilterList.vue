@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import FilterListItem from '@/components/FilterListItem/FilterListItem.vue';
+import FilterListItem from '@/components/FilterListItem.vue';
 import { mapState } from 'vuex';
 
 export default {
@@ -20,6 +20,3 @@ export default {
   },
 };
 </script>
-
-<style scoped lang="scss">
-</style>

@@ -7,11 +7,13 @@
     text-center px-4 py-10">
       <p class="mb-10">Are you sure you want to delete this task?</p>
       <button
+        id="cancel-deleting-task"
         @click="cleanDeletingTask()"
         class="mr-10 bg-dark-gray text-white w-1/4 rounded py-2 hover:bg-opacity-80">
         No
       </button>
       <button
+        id="delete-task"
         @click="deleteCurrentTask()"
         class="bg-secondary text-white w-1/4 rounded py-2 hover:bg-opacity-80">
         Yes

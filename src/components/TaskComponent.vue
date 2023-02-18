@@ -1,28 +1,28 @@
 <template>
   <li
     :class="{ 'bg-tertiary-light': expired }"
-    class="border-b-2 border-b-gray last:border-b-0 p-4 rounded">
+    class="task-container border-b-2 border-b-gray last:border-b-0 p-4 rounded">
     <div class="flex items-center">
       <button
         @click="changeStatus()"
-        class="flex-none w-8 h-8 bg-gray rounded-full
+        class="task-container__done flex-none w-8 h-8 bg-gray rounded-full
          text-white flex justify-center items-center"
         :class="{ 'bg-success': task.done }">
         <span v-if="task.done" class="material-symbols-outlined">done</span>
       </button>
       <div class="flex-auto px-4">
-        <p>{{ task.description }}</p>
-        <p class="text-sm text-dark-gray">{{ task.date }}</p>
+        <p class="task-container__description">{{ task.description }}</p>
+        <p class="task-container__date text-sm text-dark-gray">{{ task.date }}</p>
       </div>
-      <div class="flex-none">
+      <div class="task-methods flex-none">
         <button @click="duplicateCurrentTask()" class="mr-1">
-          <span class="material-symbols-outlined">content_copy</span>
+          <span class="task-methods__duplicate material-symbols-outlined">content_copy</span>
         </button>
         <button @click="setEditingTask()" class="mr-1">
-          <span class="material-symbols-outlined">edit</span>
+          <span class="task-methods__edit material-symbols-outlined">edit</span>
         </button>
         <button @click="deleteTask()">
-          <span class="material-symbols-outlined">delete</span>
+          <span class="task-methods__delete material-symbols-outlined">delete</span>
         </button>
       </div>
     </div>
