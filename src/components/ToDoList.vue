@@ -1,5 +1,5 @@
 <template>
-  <ul class="py-8">
+  <ul id="to-do-list" class="py-8">
     <li id="without-tasks" v-if="!filteredTasks.length">
       <p>Please add a new task</p>
     </li>
